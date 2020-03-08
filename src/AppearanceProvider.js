@@ -1,12 +1,11 @@
 import React, { createContext, useState, useEffect } from "react";
-import { appearance as appearanceStorage } from "utils/storages";
+import { appearance as appearanceStorage } from "utils/storageManager";
 
 const initial = appearanceStorage.getItem() || "auto";
 
 export const AppearanceContext = createContext(initial);
 
 export const AppearanceDispatch = createContext(() => {});
-
 export default ({ children }) => {
   const [state, setState] = useState(initial);
 

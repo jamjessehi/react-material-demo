@@ -1,14 +1,15 @@
 export default class Storage {
-  constructor(key) {
+  constructor(key, storage = localStorage) {
     this.key = key;
+    this.storage = storage;
   }
 
   setItem(value) {
-    localStorage.setItem(this.key, JSON.stringify(value));
+    this.storage.setItem(this.key, JSON.stringify(value));
   }
 
   getItem() {
-    const result = localStorage.getItem(this.key);
+    const result = this.storage.getItem(this.key);
 
     try {
       return JSON.parse(result);
@@ -16,6 +17,6 @@ export default class Storage {
   }
 
   removeItem() {
-    localStorage.removeItem(this.key);
+    this.storage.removeItem(this.key);
   }
 }
