@@ -22,7 +22,6 @@ export default () => {
     <Container className={classes.container} maxWidth="sm">
       <div className={classes.content}>
         <Appearance />
-        <div style={{ height: "1000px" }} />
       </div>
       <Footer />
     </Container>
