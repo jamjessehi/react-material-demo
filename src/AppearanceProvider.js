@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import { appearance as appearanceStorage } from "utils/storages";
 
-const initial = appearanceStorage.getItem() || "light";
+const initial = appearanceStorage.getItem() || "auto";
 
 export const AppearanceContext = createContext(initial);
 

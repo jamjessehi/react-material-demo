@@ -1,16 +1,14 @@
 import React from "react";
-import AppearanceProvider from "./AppearanceProvider";
-import ThemeProvider from "./ThemeProvider";
-import Paper from "@material-ui/core/Paper";
-import Appearance from "./Appearance";
+import AppearanceProvider from "AppearanceProvider";
+import ThemeProvider from "ThemeProvider";
+
+import Page from "Page";
 
 function App() {
   return (
     <AppearanceProvider>
       <ThemeProvider>
-        <Paper>
-          <Appearance />
-        </Paper>
+        <Page />
       </ThemeProvider>
     </AppearanceProvider>
   );
