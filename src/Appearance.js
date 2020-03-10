@@ -20,40 +20,42 @@ export default () => {
   }
 
   return (
-    <FormControl component="fieldset">
-      <FormLabel component="legend">Appearance</FormLabel>
-      <RadioGroup
-        value={appearanceContext}
-        aria-label="position"
-        name="position"
-        row
-      >
-        <FormControlLabel
-          value="light"
-          control={<Radio color="primary" />}
-          label="Light"
-          onChange={handleChange}
-        />
-        <FormControlLabel
-          value="dark"
-          control={<Radio color="primary" />}
-          label="Dark"
-          onChange={handleChange}
-        />
-        <FormControlLabel
-          value="auto"
-          control={<Radio color="primary" />}
-          label={
-            <div>
-              Auto
-              <Box component="span" color="grey.700">
-                <Typography variant="caption">(System default)</Typography>
-              </Box>
-            </div>
-          }
-          onChange={handleChange}
-        />
-      </RadioGroup>
-    </FormControl>
+    <Box color="text.primary">
+      <FormControl component="fieldset">
+        <FormLabel component="legend">Appearance</FormLabel>
+        <RadioGroup
+          value={appearanceContext}
+          aria-label="position"
+          name="position"
+          row
+        >
+          <FormControlLabel
+            value="light"
+            control={<Radio color="primary" />}
+            label="Light"
+            onChange={handleChange}
+          />
+          <FormControlLabel
+            value="dark"
+            control={<Radio color="primary" />}
+            label="Dark"
+            onChange={handleChange}
+          />
+          <FormControlLabel
+            value="auto"
+            control={<Radio color="primary" />}
+            label={
+              <div>
+                Auto
+                <Box component="span" color="grey.700">
+                  <Typography variant="caption">(System default)</Typography>
+                </Box>
+              </div>
+            }
+            onChange={handleChange}
+          />
+        </RadioGroup>
+      </FormControl>
+    </Box>
   );
 };
