@@ -2,13 +2,20 @@ import React, { createContext, useReducer, useEffect, useContext } from "react";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { AppearanceContext } from "AppearanceProvider";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { theme as themeStorage } from "utils/storageManager";
 
-const initial = {};
+const initial = themeStorage.getItem() || {};
 
 const CHANGE = "CHANGE";
+const CHANGE_PALETTE = "CHANGE_PALETTE";
 
 export const changeAction = value => ({
   type: CHANGE,
+  value
+});
+
+export const changePaletteAction = value => ({
+  type: CHANGE_PALETTE,
   value
 });
 
@@ -20,6 +27,16 @@ const reducer = (state, action) => {
         ...action.value
       };
 
+    case CHANGE_PALETTE:
+      const prevPalette = state.palette || {};
+
+      return {
+        ...state,
+        palette: {
+          ...prevPalette,
+          ...action.value
+        }
+      };
     default:
       return {};
   }
@@ -40,9 +57,13 @@ export default ({ children }) => {
 
     if (type) {
       type = type === "auto" ? mode : type;
-      dispatch(changeAction({ palette: { type } }));
+      dispatch(changePaletteAction({ type }));
     }
   }, [prefersDarkMode, appearanceContext]);
+
+  useEffect(() => {
+    themeStorage.setItem(state);
+  }, [state]);
 
   return (
     <ThemeProvider theme={createMuiTheme(state)}>
